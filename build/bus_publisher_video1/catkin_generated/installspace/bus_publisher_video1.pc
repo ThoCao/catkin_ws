@@ -1,0 +1,8 @@
+prefix=/home/thocao/catkin_ws/install
+
+Name: bus_publisher_video1
+Description: Description of bus_publisher_video1
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/thocao/catkin_ws/install/lib 
+Requires: 

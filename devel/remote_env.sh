@@ -4,9 +4,9 @@ export ROS_WS=/home/thocao/catkin_ws
 export PATH=$ROS_ROOT/bin:$PATH
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PAH:$ROS_WS
 
-export ROS_IP=192.168.0.4
+export ROS_IP=192.168.0.2
 export ROS_MASTER_URI=http://192.168.0.23:11311
-export ROS_HOSTNAME=192.168.0.4
+export ROS_HOSTNAME=192.168.0.2
 
 source $ROS_WS/devel/setup.bash
 exec "$@"

@@ -71,60 +71,25 @@ int main(int argc, char **argv)
     std::istringstream video_sourceCmd(argv[1]);
     int video_source;
     cv::VideoCapture cap1(0); // open the default camera
-    cv::VideoCapture cap2(1); // open the default camera
-
-    cv::VideoCapture cap3(2); // open the default camera
-
-    if(!cap1.isOpened() || !cap2.isOpened() || !cap3.isOpened())  // check if we succeeded
+   
+    if(!cap1.isOpened())  // check if we succeeded
         return -1;
     cap1.set(CV_CAP_PROP_FRAME_WIDTH,320);
     cap1.set(CV_CAP_PROP_FRAME_HEIGHT,240);
 
-    cap2.set(CV_CAP_PROP_FRAME_WIDTH,320);
-    cap2.set(CV_CAP_PROP_FRAME_HEIGHT,240);
-
-    cap3.set(CV_CAP_PROP_FRAME_WIDTH,320);
-    cap3.set(CV_CAP_PROP_FRAME_HEIGHT,240);
-
-    
 
 
     sensor_msgs::ImagePtr msg;
 
-    ros::Rate loop_rate(5);
-    cv::Mat Limg;
-    cv::Mat Rimg;
-     
-    cv::Mat Uimg;
-    cv::Mat Dimg;
-
-    cv::Mat LDimg;
- 
-
-    cv::Mat RDimg;
-
-
+    ros::Rate loop_rate(1);
+   
     //cv::namedWindow("Yolo V3",cv::WINDOW_NORMAL);
     //cv::setWindowProperty("Yolo V3",cv::WND_PROP_FULLSCREEN,cv::WINDOW_FULLSCREEN);
 
     while (nh.ok()) {
 
-       cap1 >> Limg; // get a new frame from camera
-       cap2 >> Rimg;
-
-       cap3 >> LDimg;
-
-       
-       cv::resize(Limg,Limg,Rimg.size());
-       Uimg = horizontalStack(Limg,Rimg);
-
-       cv::resize(LDimg,RDimg,LDimg.size());
-
-       Dimg = horizontalStack(LDimg,RDimg);
-       cv::resize(Dimg,Dimg,Uimg.size());
-
-       frame = verticalStack(Uimg,Dimg);
-
+       cap1 >> frame; // get a new frame from camera
+     
         // Check if grabbed frame is actually full with some content
         if(!frame.empty()){
             if(flag == false)

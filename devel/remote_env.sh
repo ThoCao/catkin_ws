@@ -1,5 +1,5 @@
 #!/bin/bash
-export ROS_WS=/home/thocao/catkin_ws
+export ROS_WS=/home/ubuntu/catkin_ws
 #source $ROS_WS/devel/setup.bash
 export PATH=$ROS_ROOT/bin:$PATH
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PAH:$ROS_WS
